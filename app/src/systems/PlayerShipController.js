@@ -8,21 +8,21 @@ define(function () {
         var self = this;
 
         if (self.playerShip.components.motionSensor.gamma > -4 && self.playerShip.components.motionSensor.gamma < 4) {
-            self.playerShip.components.state.name = "idle";
+            self.playerShip.components.state.name = "movingStraight";
         } else {
             if (self.playerShip.components.motionSensor.gamma < 0) {
-                self.playerShip.components.state.name = "left";
+                self.playerShip.components.state.name = "movingLeft";
             }
 
             if (self.playerShip.components.motionSensor.gamma > 0) {
-                self.playerShip.components.state.name = "right";
+                self.playerShip.components.state.name = "movingRight";
             }
         }
     };
 
     PlayerShipController.prototype.setMovement = function () {
         var self = this;
-        
+
         self.playerShip.components.position.x += (self.playerShip.components.motionSensor.gamma / 3) || 0;
 
         if (self.playerShip.components.motionSensor.beta > 40) {

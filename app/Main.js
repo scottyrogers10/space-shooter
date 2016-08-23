@@ -20,12 +20,13 @@ require([
         spaceShooter.add.spriteSheet(spriteSheet);
 
         var prepareGameObjects = function () {
-            entities.init(spaceShooter);
-
             spaceShooter.add.system(new Foundation.System.MotionSensor(spaceShooter));
             spaceShooter.add.system(new PlayerShipController(spaceShooter));
-            spaceShooter.add.system(new Foundation.System.Animation(spaceShooter));
+            spaceShooter.add.system(new Foundation.System.SpriteAnimation(spaceShooter));
+            spaceShooter.add.system(new Foundation.System.State(spaceShooter));
             spaceShooter.add.system(new Foundation.System.Render(spaceShooter, "fg-canvas"));
+
+            entities.init(spaceShooter);
 
             run();
         };

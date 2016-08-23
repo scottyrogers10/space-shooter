@@ -3,10 +3,12 @@ define([
 ], function (entityFactory) {
     var entities = {
         init: function (game) {
-            game.add.entity(entityFactory.playerShip(game));
+            entityFactory.init.playerShip(game);
+
+            game.add.entity(entityFactory.create.playerShip(game));
         },
         update: function () {
-            
+
         }
     };
 
