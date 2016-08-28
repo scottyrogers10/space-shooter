@@ -13,19 +13,20 @@ require([
 
         var bgCanvas = new Foundation.View(spaceShooter, "bg-canvas");
         var fgCanvas = new Foundation.View(spaceShooter, "fg-canvas");
-        spaceShooter.add.view(bgCanvas);
-        spaceShooter.add.view(fgCanvas);
+        spaceShooter.addView(bgCanvas);
+        spaceShooter.addView(fgCanvas);
 
         var spriteSheet = new Foundation.SpriteSheet("app/img/space-shooter-sprite-sheet.png");
-        spaceShooter.add.spriteSheet(spriteSheet);
+        spaceShooter.addSpriteSheet(spriteSheet);
 
         var prepareGameObjects = function () {
-            entities.init(spaceShooter);
+            spaceShooter.addSystem(new Foundation.System.MotionSensor(spaceShooter));
+            spaceShooter.addSystem(new PlayerShipController(spaceShooter));
+            spaceShooter.addSystem(new Foundation.System.Restraint(spaceShooter));
+            spaceShooter.addSystem(new Foundation.System.SpriteAnimation(spaceShooter));
+            spaceShooter.addSystem(new Foundation.System.Render(spaceShooter, "fg-canvas"));
 
-            spaceShooter.add.system(new Foundation.System.MotionSensor(spaceShooter));
-            spaceShooter.add.system(new PlayerShipController(spaceShooter));
-            spaceShooter.add.system(new Foundation.System.Animation(spaceShooter));
-            spaceShooter.add.system(new Foundation.System.Render(spaceShooter, "fg-canvas"));
+            entities.init(spaceShooter);
 
             run();
         };

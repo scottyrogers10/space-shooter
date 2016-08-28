@@ -3,7 +3,7 @@ define([
 ], function (entityFactory) {
     var entities = {
         init: function (game) {
-            game.add.entity(entityFactory.playerShip(game));
+            game.addEntity(entityFactory.playerShip(game));
         },
         update: function () {
             
