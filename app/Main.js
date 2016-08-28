@@ -20,11 +20,21 @@ require([
         spaceShooter.addSpriteSheet(spriteSheet);
 
         var prepareGameObjects = function () {
+<<<<<<< HEAD
             spaceShooter.addSystem(new Foundation.System.MotionSensor(spaceShooter));
             spaceShooter.addSystem(new PlayerShipController(spaceShooter));
             spaceShooter.addSystem(new Foundation.System.Restraint(spaceShooter));
             spaceShooter.addSystem(new Foundation.System.SpriteAnimation(spaceShooter));
             spaceShooter.addSystem(new Foundation.System.Render(spaceShooter, "fg-canvas"));
+
+            entities.init(spaceShooter);
+=======
+            spaceShooter.add.system(new Foundation.System.MotionSensor(spaceShooter));
+            spaceShooter.add.system(new PlayerShipController(spaceShooter));
+            spaceShooter.add.system(new Foundation.System.SpriteAnimation(spaceShooter));
+            spaceShooter.add.system(new Foundation.System.State(spaceShooter));
+            spaceShooter.add.system(new Foundation.System.Render(spaceShooter, "fg-canvas"));
+>>>>>>> 9ae905d4c2263923ec430bb7dc3a642f21381508
 
             entities.init(spaceShooter);
 

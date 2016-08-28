@@ -22,6 +22,7 @@ define(function () {
         var self = this;
 
         if (self.playerShip.components.motionSensor.gamma > -4 && self.playerShip.components.motionSensor.gamma < 4) {
+<<<<<<< HEAD
             self.playerShip.components.spriteAnimation.currentState = "idle";
         } else {
             if (self.playerShip.components.motionSensor.gamma < 0) {
@@ -30,10 +31,37 @@ define(function () {
 
             if (self.playerShip.components.motionSensor.gamma > 0) {
                 self.playerShip.components.spriteAnimation.currentState = "right";
+=======
+            self.playerShip.components.state.name = "movingStraight";
+        } else {
+            if (self.playerShip.components.motionSensor.gamma < 0) {
+                self.playerShip.components.state.name = "movingLeft";
+            }
+
+            if (self.playerShip.components.motionSensor.gamma > 0) {
+                self.playerShip.components.state.name = "movingRight";
+>>>>>>> 9ae905d4c2263923ec430bb7dc3a642f21381508
             }
         }
     };
 
+<<<<<<< HEAD
+=======
+    PlayerShipController.prototype.setMovement = function () {
+        var self = this;
+
+        self.playerShip.components.position.x += (self.playerShip.components.motionSensor.gamma / 3) || 0;
+
+        if (self.playerShip.components.motionSensor.beta > 40) {
+            self.playerShip.components.position.y += (self.playerShip.components.motionSensor.beta - 40) / 3;
+        }
+
+        if (self.playerShip.components.motionSensor.beta < 40) {
+            self.playerShip.components.position.y -= Math.abs((self.playerShip.components.motionSensor.beta - 40) / 3);
+        }
+    };
+
+>>>>>>> 9ae905d4c2263923ec430bb7dc3a642f21381508
     PlayerShipController.prototype.init = function () {
         var self = this;
 
